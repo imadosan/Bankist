@@ -1,17 +1,192 @@
 <!doctype html>
-<html>
+<html data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/dist/style.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="../images/icon.png" />
+  <title>Bankist</title>
+  <script defer src="script.js"></script>
 </head>
 
 <body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-  <button class="btn">DaisyUI is working</button>
+  <!-- Navbar -->
+  <div class="navbar bg-base-100">
+    <div class="navbar-start">
+      <a class="btn btn-ghost normal-case text-xl">Bankist</a>
+    </div>
+    <div class="navbar-end">
+      <ul class="menu menu-horizontal px-1">
+        <li>
+          <a class="theme-btn">Theme<ion-icon name="contrast-outline"></ion-icon></a>
+        </li>
+        <li>
+          <label for="my-modal-3" class="btn btn-ghost">Log in
+            <ion-icon name="log-in-outline"></ion-icon>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="app container mx-auto px-4 md:container md:mx-auto lg:w-8/12 md:w-11/12 sm:w-10/12">
+    <div class="flex flex-col md:grid grid-cols-2 grid-row-auto gap-3">
+      <!-- Account Info -->
+      <div class="card w-full bg-base-100">
+        <div class="card-body">
+          <p class="text-2xl font-medium">Current balance</p>
+          <p class="text-slate-500">As of <span class="date">05/03/2037</span></p>
+        </div>
+      </div>
+
+      <!-- Balance -->
+      <div class="card w-full bg-base-100">
+        <div class="card-body items-end">
+          <p class="balance__value text-4xl font-medium">0000€</p>
+        </div>
+      </div>
+
+      <!-- Movements -->
+      <div class="movements row-span-3 card w-full bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="flex items-center justify-around font-medium">
+            <div>4 000€</div>
+            <div class="text-sm font-normal">3 days ago</div>
+            <div class="badge badge-success gap-2 text-white">
+              2 deposit
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="flex items-center justify-around font-medium">
+            <div>-378€</div>
+            <div class="text-sm font-normal">24/01/2037</div>
+            <div class="badge badge-error gap-2 text-white">
+              1 withdrawal
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPERATION: Transfer -->
+      <div class="operation operation--transfer card w-full shadow-xl bg-base-100">
+        <div class="card-body">
+          <h2 class="text-xl font-medium">Transfer money</h2>
+          <form class="form form--transfer grid items-end grid-cols-5 row-auto gap-1">
+            <div class="form-control w-full max-w-xs col-span-2">
+              <label class="label">
+                <span class="label-text">Transfer to</span>
+              </label>
+              <input type="text" class="form__input--to input input-bordered input-sm w-full max-w-xs" />
+            </div>
+            <div class="form-control w-full max-w-xs col-span-2">
+              <label class="label">
+                <span class="label-text">Amount</span>
+              </label>
+              <input type="text" class="form__input--amount input input-bordered input-sm w-full max-w-xs" />
+            </div>
+            <button class="form__btn--transfer btn btn-sm btn-primary">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- OPERATION: LOAN -->
+      <div class="operation operation--loan card w-full shadow-xl bg-base-100">
+        <div class="card-body">
+          <h2 class="text-xl font-medium">Request loan</h2>
+          <form class="form form--transfer grid items-end grid-cols-3 row-auto gap-1">
+            <div class="form-control w-full max-w-xs col-span-2">
+              <label class="label">
+                <span class="label-text">Amount</span>
+              </label>
+              <input type="text" class="form__input--loan-amount input input-bordered input-sm w-full max-w-xs" />
+            </div>
+            <button class="form__btn--loan btn btn-sm btn-primary">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- OPERATION: CLOSE -->
+      <div class="operation operation--close card w-full shadow-xl bg-base-100">
+        <div class="card-body">
+          <h2 class="text-xl font-medium">Close account</h2>
+          <form class="form form--transfer grid items-end grid-cols-5 row-auto gap-1">
+            <div class="form-control w-full max-w-xs col-span-2">
+              <label class="label">
+                <span class="label-text">Confirm User</span>
+              </label>
+              <input type="text" class="form__input--user input input-bordered input-sm w-full max-w-xs" />
+            </div>
+            <div class="form-control w-full max-w-xs col-span-2">
+              <label class="label">
+                <span class="label-text">Confirm PIN</span>
+              </label>
+              <input type="text" class="form__input--pin input input-bordered input-sm w-full max-w-xs" />
+            </div>
+            <button class="form__btn--close btn btn-sm btn-primary">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="flex items-center justify-between font-medium">
+        <div>
+          <p>In</p>
+          <p class="summary__value summary__value--in text-green-400">0000€</p>
+        </div>
+        <div class="">
+          <p>Out</p>
+          <p class="summary__value summary__value--out text-red-400">0000€</p>
+        </div>
+        <div>
+          <p>Interest</p>
+          <p class="summary__value summary__value--interest text-green-400">0000€</p>
+        </div>
+        <div><button class="btn--sort btn btn--sort">&downarrow; SORT</button></div>
+      </div>
+
+      <!-- Timer -->
+      <p class="flex items-center sm:justify-start md:justify-end gap-1 p-1">
+        You will be logged out in <span class="timer font-medium">05:00</span>
+      </p>
+
+    </div>
+  </div>
+
+  <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box relative flex flex-col items-start">
+      <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <div class="form-control w-full max-w-xs">
+        <label class="label">
+          <span class="label-text">Username</span>
+        </label>
+        <input type="text" placeholder="Type here" class="login__input--user input input-bordered w-full max-w-xs" />
+      </div>
+      <div class="form-control w-full max-w-xs">
+        <label class="label">
+          <span class="label-text">PIN</span>
+        </label>
+        <input type="text" placeholder="Type here" class="login__input--pin input input-bordered w-full max-w-xs" />
+      </div>
+
+      <div class="modal-action">
+        <label for="my-modal" class="login__btn btn btn-primary">Log in!</label>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
