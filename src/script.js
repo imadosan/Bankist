@@ -47,7 +47,7 @@ const account1 = {
     '2022-03-09T12:01:20.894Z',
     '2023-03-12T12:01:20.894Z',
   ],
-  currency: 'EUR',
+  currency: 'NOK',
   locale: 'nb-NO',
 };
 
@@ -111,7 +111,72 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 
+const formatMovementDate = function (date, loacle) {
+  const calcDaysPassed = (date1, date2) =>
+    Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+  const daysPassed = calcDaysPassed(new Date(), date);
+
+  if (daysPassed === 0) return 'Today';
+  if (daysPassed === 1) return 'Yesterday';
+  if (daysPassed <= 7) return `${daysPassed} days ago`;
+  else {
+    return new Intl.DateTimeFormat(loacle).format(date);
+  }
+};
+
+const formatCur = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+};
+
+const displayMovements = function (acc, sort = false) {
+  containerMovements.innerHTML = '';
+
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
+
+  movs.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const badge = mov > 0 ? 'success' : 'error';
+    const date = new Date(acc.movementsDates[i]);
+    const displayDates = formatMovementDate(date, acc.loacle);
+
+    const formattedMov = formatCur(mov, acc.loacle, acc.currency);
+
+    const html = `<div class="flex items-center justify-around font-medium">
+    <div>${formattedMov}</div>
+    <div class="text-sm font-normal">${displayDates}</div>
+    <div class="badge badge-${badge} gap-2 text-white">
+    ${i + 1} ${type}
+    </div>
+  </div>
+  <div class="divider"></div>
+  `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
+};
+
+const updateUI = function (acc) {
+  displayMovements(acc);
+  calcDisplayBalance(acc);
+};
+
 let currentAccount;
+
+// FAKE ALWAYS LOGGED IN
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
@@ -140,6 +205,7 @@ btnLogin.addEventListener('click', function (e) {
     ).format(now);
 
     inputLoginUsername.value = inputLoginPin.value = '';
+    updateUI(currentAccount);
   } else {
     e.preventDefault();
   }
