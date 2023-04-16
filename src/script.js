@@ -210,3 +210,9 @@ btnLogin.addEventListener('click', function (e) {
     e.preventDefault();
   }
 });
+
+let sorted = false;
+btnSort.addEventListener('click', function () {
+  displayMovements(currentAccount, !sorted);
+  sorted = !sorted;
+});
