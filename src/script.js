@@ -11,6 +11,8 @@ const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumInterest = document.querySelector('.summary__value--interest');
 const labelTimer = document.querySelector('.timer');
+const labelMin = document.querySelector('.minutes');
+const labelSec = document.querySelector('.seconds');
 
 const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
@@ -187,13 +189,34 @@ const calcDisplaySummary = function (acc) {
   labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
 };
 
+const startLogOutTimer = function () {
+  const tick = () => {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+
+    labelMin.style.setProperty('--value', min);
+    labelSec.style.setProperty('--value', sec);
+
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+    time--;
+  };
+  let time = 120;
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 const updateUI = function (acc) {
   displayMovements(acc);
   calcDisplayBalance(acc);
   calcDisplaySummary(acc);
 };
 
-let currentAccount;
+let currentAccount, timer;
 
 // FAKE ALWAYS LOGGED IN
 currentAccount = account1;
@@ -227,6 +250,11 @@ btnLogin.addEventListener('click', function (e) {
     ).format(now);
 
     inputLoginUsername.value = inputLoginPin.value = '';
+
+    if (timer) clearInterval(timer);
+
+    timer = startLogOutTimer();
+
     updateUI(currentAccount);
   } else {
     e.preventDefault();
@@ -264,6 +292,10 @@ btnTransfer.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
     printAlertMsg('transfer');
+
+    // Rest timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -284,6 +316,11 @@ btnLoan.addEventListener('click', function (e) {
 
       // Update UI
       updateUI(currentAccount);
+
+      // Rest timer
+      clearInterval(timer);
+      timer = startLogOutTimer();
+
       printAlertMsg('loan');
     }, 2500);
   }
