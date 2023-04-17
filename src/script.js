@@ -47,7 +47,7 @@ const account1 = {
     '2022-03-09T12:01:20.894Z',
     '2023-03-12T12:01:20.894Z',
   ],
-  currency: 'NOK',
+  currency: 'EUR',
   locale: 'nb-NO',
 };
 
@@ -196,9 +196,9 @@ const updateUI = function (acc) {
 let currentAccount;
 
 // FAKE ALWAYS LOGGED IN
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 100;
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
 
 btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
@@ -238,3 +238,59 @@ btnSort.addEventListener('click', function () {
   displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 });
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = +inputTransferAmount.value;
+  const receiverAcc = accounts.find(
+    (acc) => acc.username === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    // Add transfer date
+    currentAccount.movementsDates.push(new Date().toISOString());
+    receiverAcc.movementsDates.push(new Date().toISOString());
+
+    // Update UI
+    updateUI(currentAccount);
+    printAlertMsg('transfer');
+  }
+});
+
+const printAlertMsg = function (type) {
+  let msg;
+
+  type === 'transfer'
+    ? (msg = 'Transfer successfully completed!')
+    : (msg = 'Loan approved!');
+
+  const alertMsg = `<div class="alert alert-success shadow-lg mb-3">
+    <div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>${msg}</span>
+    </div>
+    <div class="flex-none">
+    <button class="alertBtn btn btn-sm btn-ghost">Close
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    </button>
+  </div>
+  </div>`;
+  containerApp.insertAdjacentHTML('afterbegin', alertMsg);
+
+  const alertCard = document.querySelector('.alert');
+  const btnAlert = document.querySelector('.alertBtn');
+
+  btnAlert.addEventListener('click', function (e) {
+    alertCard.style.display = 'none';
+  });
+};
