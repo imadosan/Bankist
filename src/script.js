@@ -32,7 +32,6 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 // Data
-
 const account1 = {
   owner: 'Imad Fayad',
   movements: [118, 382, -434, 22000, -650.9, -128, 78.53, 1400],
@@ -216,13 +215,37 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const printAlertMsg = function (type) {
+  let msg;
+
+  type === 'transfer'
+    ? (msg = 'Transfer successfully completed!')
+    : (msg = 'Congratulations! Your loan has been approved!');
+
+  const alertMsg = `<div class="alert alert-success shadow-lg mb-3">
+    <div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>${msg}</span>
+    </div>
+    <div class="flex-none">
+    <button class="alertBtn btn btn-sm btn-ghost">Close
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    </button>
+  </div>
+  </div>`;
+  containerApp.insertAdjacentHTML('afterbegin', alertMsg);
+
+  const alertCard = document.querySelector('.alert');
+  const btnAlert = document.querySelector('.alertBtn');
+
+  btnAlert.addEventListener('click', function (e) {
+    alertCard.style.display = 'none';
+  });
+};
+
 let currentAccount, timer;
 
-// FAKE ALWAYS LOGGED IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
-
+// Event handlers
 btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     (acc) => acc.username === inputLoginUsername.value
@@ -346,31 +369,3 @@ btnClose.addEventListener('click', function (e) {
 
   inputCloseUsername.value = inputClosePin.value = '';
 });
-
-const printAlertMsg = function (type) {
-  let msg;
-
-  type === 'transfer'
-    ? (msg = 'Transfer successfully completed!')
-    : (msg = 'Congratulations! Your loan has been approved!');
-
-  const alertMsg = `<div class="alert alert-success shadow-lg mb-3">
-    <div>
-    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-      <span>${msg}</span>
-    </div>
-    <div class="flex-none">
-    <button class="alertBtn btn btn-sm btn-ghost">Close
-      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-    </button>
-  </div>
-  </div>`;
-  containerApp.insertAdjacentHTML('afterbegin', alertMsg);
-
-  const alertCard = document.querySelector('.alert');
-  const btnAlert = document.querySelector('.alertBtn');
-
-  btnAlert.addEventListener('click', function (e) {
-    alertCard.style.display = 'none';
-  });
-};
