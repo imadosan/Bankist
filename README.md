@@ -8,7 +8,7 @@
 
 </div>
 
-![ScreenShot](/images/screenshot.png)
+![Sceenshot](images/sceenshot.png)
 
 You can view the live site -> [Here](https://bankist-imad.netlify.app/)
 
